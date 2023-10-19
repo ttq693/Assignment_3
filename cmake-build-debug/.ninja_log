@@ -1,0 +1,6 @@
+# ninja log v5
+0	3609	7194288795403666	CMakeFiles/Assignment.dir/main.cpp.obj	22d555d9746bed3c
+31	3632	7194288795631161	CMakeFiles/Assignment.dir/Account.cpp.obj	f6a36fe583e99bfd
+3632	3911	7194288798359913	Assignment.exe	68cdf0311d17db26
+4	648	7194295055854146	CMakeFiles/Assignment.dir/Date.cpp.obj	806255ce53fb59f4
+648	866	7194295057924307	Assignment.exe	ddcf0945ead1f1af
