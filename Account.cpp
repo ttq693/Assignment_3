@@ -8,26 +8,26 @@ using namespace std;
 
 //all rates below are for students
 const double Student::SAVINGS_INTEREST = 0.04; 		// annual rate
-const double Student::CHECKING_INTEREST = 0.01;		// annual rate. Yes! this is interest rate for the checking account.
+const double Student::CHECKING_INTEREST = 0.01;		// this is interest rate for the checking account.
 const double Student::CHECK_CHARGE = 0.02; 			//cents for withdrawal
 const double Student::OVERDRAFT_PENALTY = 25.0; 	//dollar
 
 // all rates below are for senior
 const double Senior::SAVINGS_INTEREST = 0.04;		// annual rate
-const double Senior::CHECKING_INTEREST = 0.01;      // annual rate. Yes! this is interest rate for the checking account.
+const double Senior::CHECKING_INTEREST = 0.01;      // this is interest rate for the checking account.
 const double Senior::CHECK_CHARGE = 0.01;           //cents for withdrawal
 const double Senior::OVERDRAFT_PENALTY = 25.0;      //dollar
 
 // all rates below are for adult
 const double Adult::SAVINGS_INTEREST = 0.03;		// annual rate
-const double Adult::CHECKING_INTEREST = 0.01;       // annual rate. Yes! this is interest rate for the checking account.
+const double Adult::CHECKING_INTEREST = 0.01;       // this is interest rate for the checking account.
 const double Adult::CHECK_CHARGE = 0.03;            //cents for withdrawal
 const double Adult::OVERDRAFT_PENALTY = 25.0;       //dollar
 
 // set functions
 string c_name;            // store the name of customer
 string c_address;         // store the address of customer
-int c_age;                  // store the age of customer
+int c_age;                // store the age of customer
 long c_phone;            // store the phone of customer
 long c_number;           // store the customer numeber  of customer
 

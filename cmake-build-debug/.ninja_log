@@ -1,6 +1,11 @@
 # ninja log v5
-0	3609	7194288795403666	CMakeFiles/Assignment.dir/main.cpp.obj	22d555d9746bed3c
-31	3632	7194288795631161	CMakeFiles/Assignment.dir/Account.cpp.obj	f6a36fe583e99bfd
-3632	3911	7194288798359913	Assignment.exe	68cdf0311d17db26
-4	648	7194295055854146	CMakeFiles/Assignment.dir/Date.cpp.obj	806255ce53fb59f4
-648	866	7194295057924307	Assignment.exe	ddcf0945ead1f1af
+3702	3981	7196149678435765	Assignment.exe	ddcf0945ead1f1af
+8	2497	7196153556114194	CMakeFiles/Assignment.dir/Account.cpp.obj	ed8c54fdc2c1f1ea
+5	1890	7196153689302388	CMakeFiles/Assignment.dir/main.cpp.obj	4fbcde1187d6ed7a
+84	1551	7196149654265590	CMakeFiles/Assignment.dir/Date.cpp.obj	9b0897eaff4f1984
+4	189	7196160768727406	build.ninja	7c0614d8152c1a25
+19	1542	7196166363759612	CMakeFiles/Assignment.dir/Date.cpp.obj	9b0897eaff4f1984
+0	3608	7196166384417786	CMakeFiles/Assignment.dir/main.cpp.obj	4fbcde1187d6ed7a
+10	3708	7196166385438722	CMakeFiles/Assignment.dir/Account.cpp.obj	ed8c54fdc2c1f1ea
+5	965	7196170600746105	CMakeFiles/Assignment.dir/Date.cpp.obj	9b0897eaff4f1984
+11	1423	7196173137034902	CMakeFiles/Assignment.dir/Date.cpp.obj	9b0897eaff4f1984

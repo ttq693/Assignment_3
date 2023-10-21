@@ -1,0 +1,132 @@
+\doxysection{Account.\+h}
+\hypertarget{_account_8h_source}{}\label{_account_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#ifndef\ ASSIGNMENT\_ACCOUNT\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#define\ ASSIGNMENT\_ACCOUNT\_H}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <bits/stdc++.h>}}
+\DoxyCodeLine{00005\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_customer}{Customer}}}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{string}\ name,\ address;}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{int}\ age,\ telephone\_number,\ customer\_number;}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{string}\ get\_name();}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{string}\ get\_address();}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{int}\ get\_age();}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{long}\ get\_telephone\_number();}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{long}\ get\_customer\_number();}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_name(\textcolor{keywordtype}{string}\ name);}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_address(\textcolor{keywordtype}{string}\ address);}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_age(\textcolor{keywordtype}{int}\ age);}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_telephone\_number(\textcolor{keywordtype}{long}\ phone\_number);}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_customer\_number(\textcolor{keywordtype}{long}\ customer\_number);}
+\DoxyCodeLine{00032\ \};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_senior}{Senior}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_customer}{Customer}}}
+\DoxyCodeLine{00044\ \{}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{double}\ SAVINGS\_INTEREST,\ CHECKING\_INTEREST,\ CHECK\_CHARGE,\ OVERDRAFT\_PENALTY;}
+\DoxyCodeLine{00048\ \};}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_adult}{Adult}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_customer}{Customer}}}
+\DoxyCodeLine{00060\ \{}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{double}\ SAVINGS\_INTEREST,\ CHECKING\_INTEREST,\ CHECK\_CHARGE,\ OVERDRAFT\_PENALTY;}
+\DoxyCodeLine{00064\ \};}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00072\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ OVERDRAFT\_PENALTY.}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_student}{Student}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_customer}{Customer}}}
+\DoxyCodeLine{00076\ \{}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{double}\ SAVINGS\_INTEREST,\ CHECKING\_INTEREST,\ CHECK\_CHARGE,\ OVERDRAFT\_PENALTY;}
+\DoxyCodeLine{00080\ \};}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_transaction}{Transaction}}}
+\DoxyCodeLine{00092\ \{}
+\DoxyCodeLine{00093\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{string}\ transaction\_type;}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{double}\ amount;}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{double}\ balance;\ \textcolor{comment}{//\ Date\ datafield\ is\ missing}}
+\DoxyCodeLine{00097\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00098\ \};}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \textcolor{comment}{//}}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_account}{Account}}}
+\DoxyCodeLine{00110\ \{}
+\DoxyCodeLine{00111\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00112\ \ \ \ \ \mbox{\hyperlink{class_customer}{Customer}}\ customer;}
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordtype}{double}\ balance;}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordtype}{long}\ account\_number;}
+\DoxyCodeLine{00115\ \ \ \ \ vector<Transaction\ *>\ transactions;}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keywordtype}{void}\ create\_Account(\mbox{\hyperlink{class_customer}{Customer}}\ customer,\ \textcolor{keywordtype}{double}\ balance,\ \textcolor{keywordtype}{long}\ account\_number);}
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordtype}{long}\ get\_account\_number();}
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keywordtype}{double}\ get\_balance();}
+\DoxyCodeLine{00121\ \ \ \ \ \mbox{\hyperlink{class_customer}{Customer}}\ get\_customer();}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordtype}{string}\ to\_string();}
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_customer(\mbox{\hyperlink{class_customer}{Customer}}\ customer);}
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_balance(\textcolor{keywordtype}{double}\ balance);}
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordtype}{string}\ get\_acCat();}
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordtype}{string}\ get\_acType();}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_acCat(\textcolor{keywordtype}{string}\ Cat);}
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_acType(\textcolor{keywordtype}{string}\ Typ);}
+\DoxyCodeLine{00130\ \};}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_savings___account}{Savings\_Account}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_account}{Account}}}
+\DoxyCodeLine{00141\ \{}
+\DoxyCodeLine{00142\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{keywordtype}{double}\ deposit(\textcolor{keywordtype}{double}\ amount);}
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{keywordtype}{double}\ withdraw(\textcolor{keywordtype}{double}\ amount);}
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keywordtype}{void}\ add\_interest();}
+\DoxyCodeLine{00146\ \};}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00156\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_checking___account}{Checking\_Account}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_account}{Account}}}
+\DoxyCodeLine{00157\ \{}
+\DoxyCodeLine{00158\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00159\ \ \ \ \ \textcolor{keywordtype}{double}\ deposit(\textcolor{keywordtype}{double}\ amount);}
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{keywordtype}{double}\ withdraw(\textcolor{keywordtype}{double}\ amount);}
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keywordtype}{void}\ add\_interest();}
+\DoxyCodeLine{00162\ \};}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_bank}{Bank}}}
+\DoxyCodeLine{00173\ \{}
+\DoxyCodeLine{00174\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00175\ \ \ \ \ vector<Account\ *>\ accounts;}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00177\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00178\ \ \ \ \ \textcolor{keywordtype}{void}\ add\_account();}
+\DoxyCodeLine{00179\ \ \ \ \ \textcolor{keywordtype}{void}\ make\_deposit();}
+\DoxyCodeLine{00180\ \ \ \ \ \textcolor{keywordtype}{void}\ make\_withdrawal();}
+\DoxyCodeLine{00181\ \ \ \ \ \mbox{\hyperlink{class_account}{Account}}\ get\_account();}
+\DoxyCodeLine{00182\ \};}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00184\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//ASSIGNMENT\_ACCOUNT\_H}}
+
+\end{DoxyCode}

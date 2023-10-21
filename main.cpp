@@ -12,14 +12,11 @@ public:
 };
 
 //
-/// \brief Functionname      : Application
-//
-/// \brief Author         : Smit Dungarani
-//
-/// \brief Creation Date  : 30 October, 2022
-//
+/// \brief Functionname   : Application
+/// \brief Author         : Tanzila nasrin Tazin
+/// \brief Creation Date  : 2023-10-19
 /// \brief Description    : main functions
-//
+
 int main()
 {
     int choice;
