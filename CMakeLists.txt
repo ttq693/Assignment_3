@@ -6,4 +6,5 @@ set(CMAKE_CXX_STANDARD 17)
 add_executable(Assignment main.cpp
         Account.cpp
         Date.cpp
-        Date.h)
+        Date.h
+        Account.h)

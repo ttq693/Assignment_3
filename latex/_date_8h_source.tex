@@ -1,488 +1,485 @@
 \doxysection{Date.\+h}
 \hypertarget{_date_8h_source}{}\label{_date_8h_source}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{comment}{//}}
-\DoxyCodeLine{00002\ \textcolor{comment}{//\ Created\ by\ tazin\ on\ 2023-\/10-\/19.}}
-\DoxyCodeLine{00003\ \textcolor{comment}{//}}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#ifndef\ ASSIGNMENT\_DATE\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#define\ ASSIGNMENT\_DATE\_H}}
 \DoxyCodeLine{00004\ }
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ ASSIGNMENT\_DATE\_H}}
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ ASSIGNMENT\_DATE\_H}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <iosfwd>}}
 \DoxyCodeLine{00007\ }
-\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <string>}}
-\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <iosfwd>}}
-\DoxyCodeLine{00010\ }
-\DoxyCodeLine{00011\ \textcolor{comment}{//\ \$Id:\ Date.h,v\ 1.3\ 2002/10/18\ 05:56:10\ tknarr\ Exp\ \$}}
-\DoxyCodeLine{00012\ \textcolor{comment}{//\ Copyright\ (C)\ 2000,\ 2002}}
-\DoxyCodeLine{00013\ \textcolor{comment}{//\ Todd\ T.\ Knarr\ <tknarr@silverglass.org>}}
-\DoxyCodeLine{00014\ }
-\DoxyCodeLine{00015\ \textcolor{comment}{//\ This\ program\ is\ free\ software;\ you\ can\ redistribute\ it\ and/or\ modify}}
-\DoxyCodeLine{00016\ \textcolor{comment}{//\ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
-\DoxyCodeLine{00017\ \textcolor{comment}{//\ the\ Free\ Software\ Foundation;\ either\ version\ 2\ of\ the\ License,\ or}}
-\DoxyCodeLine{00018\ \textcolor{comment}{//\ (at\ your\ option)\ any\ later\ version.}}
-\DoxyCodeLine{00019\ }
-\DoxyCodeLine{00020\ \textcolor{comment}{//\ This\ program\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
-\DoxyCodeLine{00021\ \textcolor{comment}{//\ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
-\DoxyCodeLine{00022\ \textcolor{comment}{//\ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
-\DoxyCodeLine{00023\ \textcolor{comment}{//\ GNU\ General\ Public\ License\ for\ more\ details.}}
-\DoxyCodeLine{00024\ }
-\DoxyCodeLine{00025\ \textcolor{comment}{//\ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
-\DoxyCodeLine{00026\ \textcolor{comment}{//\ along\ with\ this\ program;\ if\ not,\ write\ to\ the\ Free\ Software}}
-\DoxyCodeLine{00027\ \textcolor{comment}{//\ Foundation,\ Inc.,\ 59\ Temple\ Place,\ Suite\ 330,\ Boston,\ MA\ \ 02111-\/1307\ \ USA}}
-\DoxyCodeLine{00028\ }
-\DoxyCodeLine{00029\ \textcolor{comment}{//}}
-\DoxyCodeLine{00030\ \textcolor{comment}{//\ Classname\ \ \ \ \ \ :\ Date}}
-\DoxyCodeLine{00031\ \textcolor{comment}{//}}
-\DoxyCodeLine{00032\ \textcolor{comment}{//\ Author\ \ \ \ \ \ \ \ \ :\ Todd\ Knarr}}
-\DoxyCodeLine{00033\ \textcolor{comment}{//}}
-\DoxyCodeLine{00034\ \textcolor{comment}{//\ Creation\ Date\ \ :\ 29\ Nov\ 1995}}
-\DoxyCodeLine{00035\ \textcolor{comment}{//}}
-\DoxyCodeLine{00036\ \textcolor{comment}{//\ Superclasses\ \ \ :\ none}}
-\DoxyCodeLine{00037\ \textcolor{comment}{//}}
-\DoxyCodeLine{00038\ \textcolor{comment}{//\ Subclasses\ \ \ \ \ :\ none}}
-\DoxyCodeLine{00039\ \textcolor{comment}{//}}
-\DoxyCodeLine{00040\ \textcolor{comment}{//\ Required\ files\ :}}
-\DoxyCodeLine{00041\ \textcolor{comment}{//}}
-\DoxyCodeLine{00042\ \textcolor{comment}{//\ Description\ \ \ \ :}}
-\DoxyCodeLine{00043\ \textcolor{comment}{//}}
-\DoxyCodeLine{00044\ \textcolor{comment}{//\ Provides\ a\ Date\ class\ which\ represents\ dates\ as}}
-\DoxyCodeLine{00045\ \textcolor{comment}{//\ Julian\ day\ numbers\ (\ days\ since\ 1\ Jan\ 4713\ BC\ ).}}
-\DoxyCodeLine{00046\ \textcolor{comment}{//\ This\ class\ can\ handle\ all\ dates\ from\ \ 1\ Jan\ 4713BC\ to\ 31\ Dec\ 4999AD.}}
-\DoxyCodeLine{00047\ \textcolor{comment}{//}}
-\DoxyCodeLine{00048\ \textcolor{comment}{//\ Note:\ Years\ AD\ are\ positive,\ years\ BC\ are\ negative.\ There\ is}}
-\DoxyCodeLine{00049\ \textcolor{comment}{//\ no\ year\ 0AD,\ it\ goes\ from\ 1BC\ to\ 1AD.\ A\ year\ of\ 0\ will\ be\ treated}}
-\DoxyCodeLine{00050\ \textcolor{comment}{//\ as\ 1BC.\ No\ attempt\ is\ made\ to\ validate\ ranges.\ Physical\ errors}}
-\DoxyCodeLine{00051\ \textcolor{comment}{//\ will\ not\ result\ from\ insane\ day-\/month\ combinations\ like\ the\ 87th}}
-\DoxyCodeLine{00052\ \textcolor{comment}{//\ day\ of\ the\ 45th\ month,\ but\ the\ results\ will\ obviously\ not\ make}}
-\DoxyCodeLine{00053\ \textcolor{comment}{//\ much\ sense.}}
-\DoxyCodeLine{00054\ \textcolor{comment}{//}}
-\DoxyCodeLine{00055\ \textcolor{comment}{//\ Date\ conversion\ routines\ \ by\ Eric\ bergman-\/Terrell,\ Computer\ Language,}}
-\DoxyCodeLine{00056\ \textcolor{comment}{//\ \ \ \ \ Dec\ 1990.}}
-\DoxyCodeLine{00057\ \textcolor{comment}{//\ Alternate\ method\ by\ David\ Burki,\ CUJ\ Feb\ 1993.}}
-\DoxyCodeLine{00058\ \textcolor{comment}{//}}
-\DoxyCodeLine{00059\ \textcolor{comment}{//\ To\ Do:}}
-\DoxyCodeLine{00060\ \textcolor{comment}{//\ *\ Add\ <<\ and\ >>\ operators\ for\ iostreams.\ They\ should\ probably\ output}}
-\DoxyCodeLine{00061\ \textcolor{comment}{//\ \ \ and\ input\ the\ string\ form.}}
-\DoxyCodeLine{00062\ \textcolor{comment}{//}}
-\DoxyCodeLine{00063\ }
-\DoxyCodeLine{00064\ \textcolor{comment}{//\ Modified\ by\ Paul\ Wolfgang}}
-\DoxyCodeLine{00065\ \textcolor{comment}{//\ The\ ToString\ function\ has\ been\ deleted\ and\ replaced\ by}}
-\DoxyCodeLine{00066\ \textcolor{comment}{//\ a\ to\_string\ function\ that\ returns\ a\ std::string\ in\ the\ form}}
-\DoxyCodeLine{00067\ \textcolor{comment}{//\ yyyy-\/mm-\/dd.}}
-\DoxyCodeLine{00068\ \textcolor{comment}{//\ Added\ <<\ and\ >>\ operators\ for\ iostreams.\ They\ read\ and\ write\ in\ the}}
-\DoxyCodeLine{00069\ \textcolor{comment}{//\ form\ yyyy-\/mm-\/dd.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ \$Id:\ Date.h,v\ 1.3\ 2002/10/18\ 05:56:10\ tknarr\ Exp\ \$}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (C)\ 2000,\ 2002}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ Todd\ T.\ Knarr\ <tknarr@silverglass.org>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ This\ program\ is\ free\ software;\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ the\ Free\ Software\ Foundation;\ either\ version\ 2\ of\ the\ License,\ or}}
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ This\ program\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{00019\ \textcolor{comment}{//\ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{00020\ \textcolor{comment}{//\ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{00023\ \textcolor{comment}{//\ along\ with\ this\ program;\ if\ not,\ write\ to\ the\ Free\ Software}}
+\DoxyCodeLine{00024\ \textcolor{comment}{//\ Foundation,\ Inc.,\ 59\ Temple\ Place,\ Suite\ 330,\ Boston,\ MA\ \ 02111-\/1307\ \ USA}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{comment}{//}}
+\DoxyCodeLine{00027\ \textcolor{comment}{//\ Classname\ \ \ \ \ \ :\ Date}}
+\DoxyCodeLine{00028\ \textcolor{comment}{//}}
+\DoxyCodeLine{00029\ \textcolor{comment}{//\ Author\ \ \ \ \ \ \ \ \ :\ Todd\ Knarr}}
+\DoxyCodeLine{00030\ \textcolor{comment}{//}}
+\DoxyCodeLine{00031\ \textcolor{comment}{//\ Creation\ Date\ \ :\ 29\ Nov\ 1995}}
+\DoxyCodeLine{00032\ \textcolor{comment}{//}}
+\DoxyCodeLine{00033\ \textcolor{comment}{//\ Superclasses\ \ \ :\ none}}
+\DoxyCodeLine{00034\ \textcolor{comment}{//}}
+\DoxyCodeLine{00035\ \textcolor{comment}{//\ Subclasses\ \ \ \ \ :\ none}}
+\DoxyCodeLine{00036\ \textcolor{comment}{//}}
+\DoxyCodeLine{00037\ \textcolor{comment}{//\ Required\ files\ :}}
+\DoxyCodeLine{00038\ \textcolor{comment}{//}}
+\DoxyCodeLine{00039\ \textcolor{comment}{//\ Description\ \ \ \ :}}
+\DoxyCodeLine{00040\ \textcolor{comment}{//}}
+\DoxyCodeLine{00041\ \textcolor{comment}{//\ Provides\ a\ Date\ class\ which\ represents\ dates\ as}}
+\DoxyCodeLine{00042\ \textcolor{comment}{//\ Julian\ day\ numbers\ (\ days\ since\ 1\ Jan\ 4713\ BC\ ).}}
+\DoxyCodeLine{00043\ \textcolor{comment}{//\ This\ class\ can\ handle\ all\ dates\ from\ \ 1\ Jan\ 4713BC\ to\ 31\ Dec\ 4999AD.}}
+\DoxyCodeLine{00044\ \textcolor{comment}{//}}
+\DoxyCodeLine{00045\ \textcolor{comment}{//\ Note:\ Years\ AD\ are\ positive,\ years\ BC\ are\ negative.\ There\ is}}
+\DoxyCodeLine{00046\ \textcolor{comment}{//\ no\ year\ 0AD,\ it\ goes\ from\ 1BC\ to\ 1AD.\ A\ year\ of\ 0\ will\ be\ treated}}
+\DoxyCodeLine{00047\ \textcolor{comment}{//\ as\ 1BC.\ No\ attempt\ is\ made\ to\ validate\ ranges.\ Physical\ errors}}
+\DoxyCodeLine{00048\ \textcolor{comment}{//\ will\ not\ result\ from\ insane\ day-\/month\ combinations\ like\ the\ 87th}}
+\DoxyCodeLine{00049\ \textcolor{comment}{//\ day\ of\ the\ 45th\ month,\ but\ the\ results\ will\ obviously\ not\ make}}
+\DoxyCodeLine{00050\ \textcolor{comment}{//\ much\ sense.}}
+\DoxyCodeLine{00051\ \textcolor{comment}{//}}
+\DoxyCodeLine{00052\ \textcolor{comment}{//\ Date\ conversion\ routines\ \ by\ Eric\ bergman-\/Terrell,\ Computer\ Language,}}
+\DoxyCodeLine{00053\ \textcolor{comment}{//\ \ \ \ \ Dec\ 1990.}}
+\DoxyCodeLine{00054\ \textcolor{comment}{//\ Alternate\ method\ by\ David\ Burki,\ CUJ\ Feb\ 1993.}}
+\DoxyCodeLine{00055\ \textcolor{comment}{//}}
+\DoxyCodeLine{00056\ \textcolor{comment}{//\ To\ Do:}}
+\DoxyCodeLine{00057\ \textcolor{comment}{//\ *\ Add\ <<\ and\ >>\ operators\ for\ iostreams.\ They\ should\ probably\ output}}
+\DoxyCodeLine{00058\ \textcolor{comment}{//\ \ \ and\ input\ the\ string\ form.}}
+\DoxyCodeLine{00059\ \textcolor{comment}{//}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \textcolor{comment}{//\ Modified\ by\ Paul\ Wolfgang}}
+\DoxyCodeLine{00062\ \textcolor{comment}{//\ The\ ToString\ function\ has\ been\ deleted\ and\ replaced\ by}}
+\DoxyCodeLine{00063\ \textcolor{comment}{//\ a\ to\_string\ function\ that\ returns\ a\ std::string\ in\ the\ form}}
+\DoxyCodeLine{00064\ \textcolor{comment}{//\ yyyy-\/mm-\/dd.}}
+\DoxyCodeLine{00065\ \textcolor{comment}{//\ Added\ <<\ and\ >>\ operators\ for\ iostreams.\ They\ read\ and\ write\ in\ the}}
+\DoxyCodeLine{00066\ \textcolor{comment}{//\ form\ yyyy-\/mm-\/dd.}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#include\ <time.h>}}
 \DoxyCodeLine{00070\ }
-\DoxyCodeLine{00071\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
-\DoxyCodeLine{00072\ \textcolor{preprocessor}{\#include\ <time.h>}}
+\DoxyCodeLine{00071\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_date}{Date}}}
+\DoxyCodeLine{00072\ \{}
 \DoxyCodeLine{00073\ }
-\DoxyCodeLine{00074\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_date}{Date}}}
-\DoxyCodeLine{00075\ \{}
-\DoxyCodeLine{00076\ }
-\DoxyCodeLine{00077\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00078\ }
-\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{long}\ \ \ \ \ \ \ \ lJulianDay;}
-\DoxyCodeLine{00080\ }
-\DoxyCodeLine{00081\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00082\ \ \ \ \ \textcolor{comment}{//\ Function\ \ \ \ \ \ :\ YmdToJd}}
-\DoxyCodeLine{00083\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00084\ \ \ \ \ \textcolor{comment}{//\ Author\ \ \ \ \ \ \ \ :\ Todd\ Knarr}}
-\DoxyCodeLine{00085\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00086\ \ \ \ \ \textcolor{comment}{//\ Creation\ date\ :\ 29\ Nov\ 1995}}
-\DoxyCodeLine{00087\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00088\ \ \ \ \ \textcolor{comment}{//\ Parameters\ \ \ \ :\ int\ year,\ month,\ day}}
-\DoxyCodeLine{00089\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00090\ \ \ \ \ \textcolor{comment}{//\ Return\ values\ :\ long\ julian\ day}}
-\DoxyCodeLine{00091\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00092\ \ \ \ \ \textcolor{comment}{//\ Description\ \ \ :}}
+\DoxyCodeLine{00074\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{long}\ \ \ \ \ \ \ \ lJulianDay;}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{comment}{//\ Function\ \ \ \ \ \ :\ YmdToJd}}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{comment}{//\ Author\ \ \ \ \ \ \ \ :\ Todd\ Knarr}}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{comment}{//\ Creation\ date\ :\ 29\ Nov\ 1995}}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{comment}{//\ Parameters\ \ \ \ :\ int\ year,\ month,\ day}}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{comment}{//\ Return\ values\ :\ long\ julian\ day}}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{comment}{//\ Description\ \ \ :}}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{comment}{//\ Internal\ routine\ that\ does\ the\ physical\ conversion}}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{comment}{//\ from\ YMD\ form\ to\ Julian\ day\ number.}}
 \DoxyCodeLine{00093\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00094\ \ \ \ \ \textcolor{comment}{//\ Internal\ routine\ that\ does\ the\ physical\ conversion}}
-\DoxyCodeLine{00095\ \ \ \ \ \textcolor{comment}{//\ from\ YMD\ form\ to\ Julian\ day\ number.}}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{long}\ YmdToJd(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ iYear,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ iMonth,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ iDay\ );}
+\DoxyCodeLine{00095\ }
 \DoxyCodeLine{00096\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{long}\ YmdToJd(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ iYear,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ iMonth,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ iDay\ );}
-\DoxyCodeLine{00098\ }
-\DoxyCodeLine{00099\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00100\ \ \ \ \ \textcolor{comment}{//\ Function\ \ \ \ \ \ :\ JdToYmd}}
-\DoxyCodeLine{00101\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00102\ \ \ \ \ \textcolor{comment}{//\ Author\ \ \ \ \ \ \ \ :\ Todd\ Knarr}}
-\DoxyCodeLine{00103\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00104\ \ \ \ \ \textcolor{comment}{//\ Creation\ date\ :\ 29\ Nov\ 1995}}
-\DoxyCodeLine{00105\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00106\ \ \ \ \ \textcolor{comment}{//\ Parameters\ \ \ \ :\ long\ julian\ day,\ pointers\ to\ int\ year,\ month,\ day}}
-\DoxyCodeLine{00107\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00108\ \ \ \ \ \textcolor{comment}{//\ Return\ values\ :\ none}}
-\DoxyCodeLine{00109\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00110\ \ \ \ \ \textcolor{comment}{//\ Description\ \ \ :}}
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{comment}{//\ Function\ \ \ \ \ \ :\ JdToYmd}}
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{comment}{//\ Author\ \ \ \ \ \ \ \ :\ Todd\ Knarr}}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{comment}{//\ Creation\ date\ :\ 29\ Nov\ 1995}}
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{comment}{//\ Parameters\ \ \ \ :\ long\ julian\ day,\ pointers\ to\ int\ year,\ month,\ day}}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{comment}{//\ Return\ values\ :\ none}}
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{comment}{//\ Description\ \ \ :}}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{comment}{//\ Internal\ routine\ that\ reverses\ the\ conversion,\ turning\ a\ Julian}}
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{comment}{//\ day\ number\ into\ YMD\ values.}}
 \DoxyCodeLine{00111\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00112\ \ \ \ \ \textcolor{comment}{//\ Internal\ routine\ that\ reverses\ the\ conversion,\ turning\ a\ Julian}}
-\DoxyCodeLine{00113\ \ \ \ \ \textcolor{comment}{//\ day\ number\ into\ YMD\ values.}}
-\DoxyCodeLine{00114\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ JdToYmd(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{long}\ lJD,\ \textcolor{keywordtype}{int}\ *piYear,\ \textcolor{keywordtype}{int}\ *piMonth,}
-\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ *piDay\ );}
-\DoxyCodeLine{00117\ }
-\DoxyCodeLine{00118\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00119\ }
-\DoxyCodeLine{00120\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00121\ \ \ \ \ \textcolor{comment}{//\ Function\ \ \ \ \ \ :\ IsLeapYear}}
-\DoxyCodeLine{00122\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00123\ \ \ \ \ \textcolor{comment}{//\ Author\ \ \ \ \ \ \ \ :\ Todd\ Knarr}}
-\DoxyCodeLine{00124\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00125\ \ \ \ \ \textcolor{comment}{//\ Creation\ date\ :\ 5\ Dec\ 1995}}
-\DoxyCodeLine{00126\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00127\ \ \ \ \ \textcolor{comment}{//\ Parameters\ \ \ \ :\ int\ year}}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ JdToYmd(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{long}\ lJD,\ \textcolor{keywordtype}{int}\ *piYear,\ \textcolor{keywordtype}{int}\ *piMonth,}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ *piDay\ );}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{comment}{//\ Function\ \ \ \ \ \ :\ IsLeapYear}}
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{comment}{//\ Author\ \ \ \ \ \ \ \ :\ Todd\ Knarr}}
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{comment}{//\ Creation\ date\ :\ 5\ Dec\ 1995}}
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{comment}{//\ Parameters\ \ \ \ :\ int\ year}}
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{comment}{//\ Return\ values\ :\ 1\ if\ the\ year\ given\ is\ a\ leap\ year}}
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0\ if\ it\ is\ not}}
 \DoxyCodeLine{00128\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00129\ \ \ \ \ \textcolor{comment}{//\ Return\ values\ :\ 1\ if\ the\ year\ given\ is\ a\ leap\ year}}
-\DoxyCodeLine{00130\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0\ if\ it\ is\ not}}
-\DoxyCodeLine{00131\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ IsLeapYear(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ iYear\ )}
-\DoxyCodeLine{00133\ \ \ \ \ \{}
-\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ jd1,\ jd2;}
-\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ jd1\ =\ YmdToJd(\ iYear,\ 2,\ 28\ );}
-\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ jd2\ =\ YmdToJd(\ iYear,\ 3,\ 1\ );}
-\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\ (\ jd2\ -\/\ jd1\ )\ >\ 1\ );}
-\DoxyCodeLine{00138\ \ \ \ \ \}}
-\DoxyCodeLine{00139\ }
-\DoxyCodeLine{00140\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00141\ \ \ \ \ \textcolor{comment}{//\ Function\ \ \ \ \ \ :\ default\ constructor}}
-\DoxyCodeLine{00142\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00143\ \ \ \ \ \textcolor{comment}{//\ Author\ \ \ \ \ \ \ \ :\ Todd\ Knarr}}
-\DoxyCodeLine{00144\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00145\ \ \ \ \ \textcolor{comment}{//\ Creation\ date\ :\ 29\ Nov\ 1995}}
-\DoxyCodeLine{00146\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00147\ \ \ \ \ \textcolor{comment}{//\ Parameters\ \ \ \ :\ none}}
-\DoxyCodeLine{00148\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00149\ \ \ \ \ \textcolor{comment}{//\ Return\ values\ :\ none}}
-\DoxyCodeLine{00150\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00151\ \ \ \ \ \textcolor{comment}{//\ Description\ \ \ :}}
-\DoxyCodeLine{00152\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00153\ \ \ \ \ \textcolor{comment}{//\ Constructs\ a\ new\ object\ initialized\ to\ 1\ Jan\ 4713BC}}
-\DoxyCodeLine{00154\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00155\ \ \ \ \ \mbox{\hyperlink{class_date}{Date}}()}
-\DoxyCodeLine{00156\ \ \ \ \ \{}
-\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ lJulianDay\ =\ 0L;}
-\DoxyCodeLine{00158\ \ \ \ \ \}}
-\DoxyCodeLine{00159\ }
-\DoxyCodeLine{00160\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00161\ \ \ \ \ \textcolor{comment}{//\ Function\ \ \ \ \ \ :\ copy\ constructor}}
-\DoxyCodeLine{00162\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00163\ \ \ \ \ \textcolor{comment}{//\ Author\ \ \ \ \ \ \ \ :\ Todd\ Knarr}}
-\DoxyCodeLine{00164\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00165\ \ \ \ \ \textcolor{comment}{//\ Creation\ date\ :\ 13\ Mar\ 1996}}
-\DoxyCodeLine{00166\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00167\ \ \ \ \ \textcolor{comment}{//\ Parameters\ \ \ \ :}}
-\DoxyCodeLine{00168\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00169\ \ \ \ \ \textcolor{comment}{//\ Return\ values\ :}}
-\DoxyCodeLine{00170\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00171\ \ \ \ \ \mbox{\hyperlink{class_date}{Date}}(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_date}{Date}}\&\ Orig\ )\ \{\ lJulianDay\ =\ Orig.lJulianDay;\ \}}
-\DoxyCodeLine{00172\ \ \ \ \ \mbox{\hyperlink{class_date}{Date}}\&\ operator=(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_date}{Date}}\&\ Orig\ )}
-\DoxyCodeLine{00173\ \ \ \ \ \{}
-\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ lJulianDay\ =\ Orig.lJulianDay;}
-\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{00176\ \ \ \ \ \}}
-\DoxyCodeLine{00177\ }
-\DoxyCodeLine{00178\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00179\ \ \ \ \ \textcolor{comment}{//\ Function\ \ \ \ \ \ :\ time\_t\ constructor}}
-\DoxyCodeLine{00180\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00181\ \ \ \ \ \textcolor{comment}{//\ Author\ \ \ \ \ \ \ \ :\ Todd\ Knarr}}
-\DoxyCodeLine{00182\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00183\ \ \ \ \ \textcolor{comment}{//\ Creation\ date\ :\ 29\ Nov\ 1995}}
-\DoxyCodeLine{00184\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00185\ \ \ \ \ \textcolor{comment}{//\ Parameters\ \ \ \ :\ none}}
-\DoxyCodeLine{00186\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00187\ \ \ \ \ \textcolor{comment}{//\ Return\ values\ :\ none}}
-\DoxyCodeLine{00188\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00189\ \ \ \ \ \textcolor{comment}{//\ Description\ \ \ :}}
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ IsLeapYear(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ iYear\ )}
+\DoxyCodeLine{00130\ \ \ \ \ \{}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ jd1,\ jd2;}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ jd1\ =\ YmdToJd(\ iYear,\ 2,\ 28\ );}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ jd2\ =\ YmdToJd(\ iYear,\ 3,\ 1\ );}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\ (\ jd2\ -\/\ jd1\ )\ >\ 1\ );}
+\DoxyCodeLine{00135\ \ \ \ \ \}}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{comment}{//\ Function\ \ \ \ \ \ :\ default\ constructor}}
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{comment}{//\ Author\ \ \ \ \ \ \ \ :\ Todd\ Knarr}}
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{comment}{//\ Creation\ date\ :\ 29\ Nov\ 1995}}
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{comment}{//\ Parameters\ \ \ \ :\ none}}
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{comment}{//\ Return\ values\ :\ none}}
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{comment}{//\ Description\ \ \ :}}
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00150\ \ \ \ \ \textcolor{comment}{//\ Constructs\ a\ new\ object\ initialized\ to\ 1\ Jan\ 4713BC}}
+\DoxyCodeLine{00151\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00152\ \ \ \ \ \mbox{\hyperlink{class_date}{Date}}()}
+\DoxyCodeLine{00153\ \ \ \ \ \{}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ lJulianDay\ =\ 0L;}
+\DoxyCodeLine{00155\ \ \ \ \ \}}
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{comment}{//\ Function\ \ \ \ \ \ :\ copy\ constructor}}
+\DoxyCodeLine{00159\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{comment}{//\ Author\ \ \ \ \ \ \ \ :\ Todd\ Knarr}}
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00162\ \ \ \ \ \textcolor{comment}{//\ Creation\ date\ :\ 13\ Mar\ 1996}}
+\DoxyCodeLine{00163\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{comment}{//\ Parameters\ \ \ \ :}}
+\DoxyCodeLine{00165\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00166\ \ \ \ \ \textcolor{comment}{//\ Return\ values\ :}}
+\DoxyCodeLine{00167\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00168\ \ \ \ \ \mbox{\hyperlink{class_date}{Date}}(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_date}{Date}}\&\ Orig\ )\ \{\ lJulianDay\ =\ Orig.lJulianDay;\ \}}
+\DoxyCodeLine{00169\ \ \ \ \ \mbox{\hyperlink{class_date}{Date}}\&\ operator=(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_date}{Date}}\&\ Orig\ )}
+\DoxyCodeLine{00170\ \ \ \ \ \{}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ lJulianDay\ =\ Orig.lJulianDay;}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00173\ \ \ \ \ \}}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00175\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00176\ \ \ \ \ \textcolor{comment}{//\ Function\ \ \ \ \ \ :\ time\_t\ constructor}}
+\DoxyCodeLine{00177\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00178\ \ \ \ \ \textcolor{comment}{//\ Author\ \ \ \ \ \ \ \ :\ Todd\ Knarr}}
+\DoxyCodeLine{00179\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00180\ \ \ \ \ \textcolor{comment}{//\ Creation\ date\ :\ 29\ Nov\ 1995}}
+\DoxyCodeLine{00181\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00182\ \ \ \ \ \textcolor{comment}{//\ Parameters\ \ \ \ :\ none}}
+\DoxyCodeLine{00183\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00184\ \ \ \ \ \textcolor{comment}{//\ Return\ values\ :\ none}}
+\DoxyCodeLine{00185\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00186\ \ \ \ \ \textcolor{comment}{//\ Description\ \ \ :}}
+\DoxyCodeLine{00187\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00188\ \ \ \ \ \textcolor{comment}{//\ Constructs\ an\ object\ initialized\ to\ the\ date}}
+\DoxyCodeLine{00189\ \ \ \ \ \textcolor{comment}{//\ represented\ by\ a\ system\ time\ value.}}
 \DoxyCodeLine{00190\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00191\ \ \ \ \ \textcolor{comment}{//\ Constructs\ an\ object\ initialized\ to\ the\ date}}
-\DoxyCodeLine{00192\ \ \ \ \ \textcolor{comment}{//\ represented\ by\ a\ system\ time\ value.}}
-\DoxyCodeLine{00193\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00194\ \ \ \ \ \mbox{\hyperlink{class_date}{Date}}(\ \textcolor{keyword}{const}\ time\_t\ tSysTime\ )}
-\DoxyCodeLine{00195\ \ \ \ \ \{}
-\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }tm\ *ptm;}
-\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ y,\ m,\ d;}
-\DoxyCodeLine{00198\ }
-\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ ptm\ =\ localtime(\ \&tSysTime\ );}
-\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ y\ =\ ptm-\/>tm\_year\ +\ 1900;}
-\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ m\ =\ ptm-\/>tm\_mon\ +\ 1;}
-\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ d\ =\ ptm-\/>tm\_mday;}
-\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ lJulianDay\ =\ YmdToJd(\ y,\ m,\ d\ );}
-\DoxyCodeLine{00204\ \ \ \ \ \}}
-\DoxyCodeLine{00205\ }
-\DoxyCodeLine{00206\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00207\ \ \ \ \ \textcolor{comment}{//\ Function\ \ \ \ \ \ :\ char*\ (\ string\ )\ constructor}}
-\DoxyCodeLine{00208\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00209\ \ \ \ \ \textcolor{comment}{//\ Author\ \ \ \ \ \ \ \ :\ Todd\ Knarr}}
-\DoxyCodeLine{00210\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00211\ \ \ \ \ \textcolor{comment}{//\ Creation\ date\ :\ 30\ Nov\ 1995}}
-\DoxyCodeLine{00212\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00213\ \ \ \ \ \textcolor{comment}{//\ Parameters\ \ \ \ :}}
-\DoxyCodeLine{00214\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00215\ \ \ \ \ \textcolor{comment}{//\ Return\ values\ :}}
-\DoxyCodeLine{00216\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00217\ \ \ \ \ \textcolor{comment}{//\ Description\ \ \ :}}
-\DoxyCodeLine{00218\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00219\ \ \ \ \ \textcolor{comment}{//\ Constructs\ an\ object\ from\ a\ string.}}
-\DoxyCodeLine{00220\ \ \ \ \ \textcolor{comment}{//\ The\ string\ is\ formatted\ as\ the\ ASCII\ representation}}
-\DoxyCodeLine{00221\ \ \ \ \ \textcolor{comment}{//\ of\ the\ long\ Julian\ day\ number.}}
-\DoxyCodeLine{00222\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00223\ \ \ \ \ \mbox{\hyperlink{class_date}{Date}}(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *String\ )}
-\DoxyCodeLine{00224\ \ \ \ \ \{}
-\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ lJulianDay\ =\ atol(\ String\ );}
-\DoxyCodeLine{00226\ \ \ \ \ \}}
-\DoxyCodeLine{00227\ }
-\DoxyCodeLine{00228\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00229\ \ \ \ \ \textcolor{comment}{//\ Function\ \ \ \ \ \ :\ year/month/day\ constructor}}
-\DoxyCodeLine{00230\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00231\ \ \ \ \ \textcolor{comment}{//\ Author\ \ \ \ \ \ \ \ :\ Todd\ Knarr}}
-\DoxyCodeLine{00232\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00233\ \ \ \ \ \textcolor{comment}{//\ Creation\ date\ :\ 29\ Nov\ 1995}}
-\DoxyCodeLine{00234\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00235\ \ \ \ \ \textcolor{comment}{//\ Parameters\ \ \ \ :\ int\ year,\ month,\ day}}
-\DoxyCodeLine{00236\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00237\ \ \ \ \ \textcolor{comment}{//\ Return\ values\ :\ none}}
-\DoxyCodeLine{00238\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00239\ \ \ \ \ \textcolor{comment}{//\ Description\ \ \ :}}
+\DoxyCodeLine{00191\ \ \ \ \ \mbox{\hyperlink{class_date}{Date}}(\ \textcolor{keyword}{const}\ time\_t\ tSysTime\ )}
+\DoxyCodeLine{00192\ \ \ \ \ \{}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }tm\ *ptm;}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ y,\ m,\ d;}
+\DoxyCodeLine{00195\ }
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ ptm\ =\ localtime(\ \&tSysTime\ );}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ y\ =\ ptm-\/>tm\_year\ +\ 1900;}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ m\ =\ ptm-\/>tm\_mon\ +\ 1;}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ d\ =\ ptm-\/>tm\_mday;}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ lJulianDay\ =\ YmdToJd(\ y,\ m,\ d\ );}
+\DoxyCodeLine{00201\ \ \ \ \ \}}
+\DoxyCodeLine{00202\ }
+\DoxyCodeLine{00203\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00204\ \ \ \ \ \textcolor{comment}{//\ Function\ \ \ \ \ \ :\ char*\ (\ string\ )\ constructor}}
+\DoxyCodeLine{00205\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00206\ \ \ \ \ \textcolor{comment}{//\ Author\ \ \ \ \ \ \ \ :\ Todd\ Knarr}}
+\DoxyCodeLine{00207\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00208\ \ \ \ \ \textcolor{comment}{//\ Creation\ date\ :\ 30\ Nov\ 1995}}
+\DoxyCodeLine{00209\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00210\ \ \ \ \ \textcolor{comment}{//\ Parameters\ \ \ \ :}}
+\DoxyCodeLine{00211\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00212\ \ \ \ \ \textcolor{comment}{//\ Return\ values\ :}}
+\DoxyCodeLine{00213\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00214\ \ \ \ \ \textcolor{comment}{//\ Description\ \ \ :}}
+\DoxyCodeLine{00215\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00216\ \ \ \ \ \textcolor{comment}{//\ Constructs\ an\ object\ from\ a\ string.}}
+\DoxyCodeLine{00217\ \ \ \ \ \textcolor{comment}{//\ The\ string\ is\ formatted\ as\ the\ ASCII\ representation}}
+\DoxyCodeLine{00218\ \ \ \ \ \textcolor{comment}{//\ of\ the\ long\ Julian\ day\ number.}}
+\DoxyCodeLine{00219\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00220\ \ \ \ \ \mbox{\hyperlink{class_date}{Date}}(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *String\ )}
+\DoxyCodeLine{00221\ \ \ \ \ \{}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ lJulianDay\ =\ atol(\ String\ );}
+\DoxyCodeLine{00223\ \ \ \ \ \}}
+\DoxyCodeLine{00224\ }
+\DoxyCodeLine{00225\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00226\ \ \ \ \ \textcolor{comment}{//\ Function\ \ \ \ \ \ :\ year/month/day\ constructor}}
+\DoxyCodeLine{00227\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00228\ \ \ \ \ \textcolor{comment}{//\ Author\ \ \ \ \ \ \ \ :\ Todd\ Knarr}}
+\DoxyCodeLine{00229\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00230\ \ \ \ \ \textcolor{comment}{//\ Creation\ date\ :\ 29\ Nov\ 1995}}
+\DoxyCodeLine{00231\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00232\ \ \ \ \ \textcolor{comment}{//\ Parameters\ \ \ \ :\ int\ year,\ month,\ day}}
+\DoxyCodeLine{00233\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00234\ \ \ \ \ \textcolor{comment}{//\ Return\ values\ :\ none}}
+\DoxyCodeLine{00235\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00236\ \ \ \ \ \textcolor{comment}{//\ Description\ \ \ :}}
+\DoxyCodeLine{00237\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00238\ \ \ \ \ \textcolor{comment}{//\ Constructs\ an\ object\ initialized\ to}}
+\DoxyCodeLine{00239\ \ \ \ \ \textcolor{comment}{//\ the\ date\ given\ by\ the\ arguments}}
 \DoxyCodeLine{00240\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00241\ \ \ \ \ \textcolor{comment}{//\ Constructs\ an\ object\ initialized\ to}}
-\DoxyCodeLine{00242\ \ \ \ \ \textcolor{comment}{//\ the\ date\ given\ by\ the\ arguments}}
-\DoxyCodeLine{00243\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00244\ \ \ \ \ \mbox{\hyperlink{class_date}{Date}}(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ iDay,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ iMonth,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ iYear\ )}
-\DoxyCodeLine{00245\ \ \ \ \ \{}
-\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ lJulianDay\ =\ YmdToJd(\ iYear,\ iMonth,\ iDay\ );}
-\DoxyCodeLine{00247\ \ \ \ \ \}}
-\DoxyCodeLine{00248\ }
+\DoxyCodeLine{00241\ \ \ \ \ \mbox{\hyperlink{class_date}{Date}}(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ iDay,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ iMonth,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ iYear\ )}
+\DoxyCodeLine{00242\ \ \ \ \ \{}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ lJulianDay\ =\ YmdToJd(\ iYear,\ iMonth,\ iDay\ );}
+\DoxyCodeLine{00244\ \ \ \ \ \}}
+\DoxyCodeLine{00245\ }
+\DoxyCodeLine{00246\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00247\ \ \ \ \ \textcolor{comment}{//\ Function\ \ \ \ \ \ :\ Year,\ Month,\ Day,\ DayOfYear,\ DayOfWeek,\ DayOfWorkWeek,}}
+\DoxyCodeLine{00248\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ IsLeapYear,\ YMD}}
 \DoxyCodeLine{00249\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00250\ \ \ \ \ \textcolor{comment}{//\ Function\ \ \ \ \ \ :\ Year,\ Month,\ Day,\ DayOfYear,\ DayOfWeek,\ DayOfWorkWeek,}}
-\DoxyCodeLine{00251\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ IsLeapYear,\ YMD}}
-\DoxyCodeLine{00252\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00253\ \ \ \ \ \textcolor{comment}{//\ Author\ \ \ \ \ \ \ \ :\ Todd\ Knarr}}
-\DoxyCodeLine{00254\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00255\ \ \ \ \ \textcolor{comment}{//\ Creation\ date\ :\ 29\ Nov\ 1995}}
-\DoxyCodeLine{00256\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00257\ \ \ \ \ \textcolor{comment}{//\ Parameters\ \ \ \ :\ none}}
-\DoxyCodeLine{00258\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00259\ \ \ \ \ \textcolor{comment}{//\ Return\ values\ :\ int\ or\ none}}
-\DoxyCodeLine{00260\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00261\ \ \ \ \ \textcolor{comment}{//\ Description\ \ \ :}}
-\DoxyCodeLine{00262\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00263\ \ \ \ \ \textcolor{comment}{//\ Functions\ to\ return\ various\ parts\ of\ the\ date.\ The\ Year(),}}
-\DoxyCodeLine{00264\ \ \ \ \ \textcolor{comment}{//\ Month()\ and\ Day()\ functions\ return\ the\ corresponding\ parts}}
-\DoxyCodeLine{00265\ \ \ \ \ \textcolor{comment}{//\ of\ the\ date.\ The\ DayOfYear()\ returns\ the\ day\ of\ the\ year,}}
-\DoxyCodeLine{00266\ \ \ \ \ \textcolor{comment}{//\ with\ 1\ Jan\ being\ day\ 1.\ The\ DayOfWeek()\ and\ DayOfWorkWeek()}}
-\DoxyCodeLine{00267\ \ \ \ \ \textcolor{comment}{//\ functions\ return\ the\ day\ of\ the\ week,\ from\ 0\ through\ 6,\ with}}
-\DoxyCodeLine{00268\ \ \ \ \ \textcolor{comment}{//\ the\ DayOfWeek()\ matching\ localtime()'s\ convention\ (\ 0\ =\ Sunday,}}
-\DoxyCodeLine{00269\ \ \ \ \ \textcolor{comment}{//\ 6\ =\ Saturday\ )\ and\ DayOfWorkWeek()\ starting\ the\ week\ on}}
-\DoxyCodeLine{00270\ \ \ \ \ \textcolor{comment}{//\ Monday\ (\ 0\ =\ Monday,\ 6\ =\ Sunday\ ).\ IsLeapYear()\ returns\ 1\ if}}
-\DoxyCodeLine{00271\ \ \ \ \ \textcolor{comment}{//\ the\ date\ is\ in\ a\ leap\ year,\ 0\ otherwise.\ YMD()\ puts\ the}}
-\DoxyCodeLine{00272\ \ \ \ \ \textcolor{comment}{//\ year,\ month\ and\ day\ values\ directly\ into\ three\ integer\ variables,}}
-\DoxyCodeLine{00273\ \ \ \ \ \textcolor{comment}{//\ for\ times\ when\ you\ need\ all\ three\ at\ the\ same\ time.}}
-\DoxyCodeLine{00274\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00275\ \ \ \ \ \textcolor{keywordtype}{int}\ Year(\ \textcolor{keywordtype}{void}\ )\textcolor{keyword}{\ const}}
-\DoxyCodeLine{00276\ \textcolor{keyword}{\ \ \ \ }\{}
-\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ y,\ m,\ d;}
-\DoxyCodeLine{00278\ }
-\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ JdToYmd(\ lJulianDay,\ \&y,\ \&m,\ \&d\ );}
-\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ y;}
-\DoxyCodeLine{00281\ \ \ \ \ \}}
-\DoxyCodeLine{00282\ \ \ \ \ \textcolor{keywordtype}{int}\ Month(\ \textcolor{keywordtype}{void}\ )\textcolor{keyword}{\ const}}
-\DoxyCodeLine{00283\ \textcolor{keyword}{\ \ \ \ }\{}
-\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ y,\ m,\ d;}
-\DoxyCodeLine{00285\ }
-\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ JdToYmd(\ lJulianDay,\ \&y,\ \&m,\ \&d\ );}
-\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m;}
-\DoxyCodeLine{00288\ \ \ \ \ \}}
-\DoxyCodeLine{00289\ \ \ \ \ \textcolor{keywordtype}{int}\ Day(\ \textcolor{keywordtype}{void}\ )\textcolor{keyword}{\ const}}
-\DoxyCodeLine{00290\ \textcolor{keyword}{\ \ \ \ }\{}
-\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ y,\ m,\ d;}
-\DoxyCodeLine{00292\ }
-\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ JdToYmd(\ lJulianDay,\ \&y,\ \&m,\ \&d\ );}
-\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ d;}
-\DoxyCodeLine{00295\ \ \ \ \ \}}
-\DoxyCodeLine{00296\ \ \ \ \ \textcolor{keywordtype}{int}\ DayOfYear(\ \textcolor{keywordtype}{void}\ )\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00297\ \ \ \ \ \textcolor{keywordtype}{int}\ DayOfWeek(\ \textcolor{keywordtype}{void}\ )\textcolor{keyword}{\ const}}
-\DoxyCodeLine{00298\ \textcolor{keyword}{\ \ \ \ }\{}
-\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\ (\ (\ (\textcolor{keywordtype}{int})\ (\ lJulianDay\ \%\ 7L\ )\ )\ +\ 1\ )\ \%\ 7\ );}
-\DoxyCodeLine{00300\ \ \ \ \ \}}
-\DoxyCodeLine{00301\ \ \ \ \ \textcolor{keywordtype}{int}\ DayOfWorkWeek(\ \textcolor{keywordtype}{void}\ )\textcolor{keyword}{\ const}}
-\DoxyCodeLine{00302\ \textcolor{keyword}{\ \ \ \ }\{}
-\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\ (\textcolor{keywordtype}{int})\ (\ lJulianDay\ \%\ 7L\ )\ );}
-\DoxyCodeLine{00304\ \ \ \ \ \}}
-\DoxyCodeLine{00305\ \ \ \ \ \textcolor{keywordtype}{int}\ IsLeapYear(\ \textcolor{keywordtype}{void}\ )\textcolor{keyword}{\ const}}
-\DoxyCodeLine{00306\ \textcolor{keyword}{\ \ \ \ }\{}
-\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ y,\ m,\ d;}
-\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ JdToYmd(\ lJulianDay,\ \&y,\ \&m,\ \&d\ );}
-\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ IsLeapYear(\ y\ );}
-\DoxyCodeLine{00310\ \ \ \ \ \}}
-\DoxyCodeLine{00311\ \ \ \ \ \textcolor{keywordtype}{void}\ YMD(\ \textcolor{keywordtype}{int}\ *pY,\ \textcolor{keywordtype}{int}\ *pM,\ \textcolor{keywordtype}{int}\ *pD\ )}
-\DoxyCodeLine{00312\ \ \ \ \ \{}
-\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ JdToYmd(\ lJulianDay,\ pY,\ pM,\ pD\ );}
-\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00315\ \ \ \ \ \}}
-\DoxyCodeLine{00316\ }
-\DoxyCodeLine{00317\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00318\ \ \ \ \ \textcolor{comment}{//\ Function\ \ \ \ \ \ :\ Additive\ operators}}
-\DoxyCodeLine{00319\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00320\ \ \ \ \ \textcolor{comment}{//\ Author\ \ \ \ \ \ \ \ :\ Todd\ Knarr}}
-\DoxyCodeLine{00321\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00322\ \ \ \ \ \textcolor{comment}{//\ Creation\ date\ :\ 30\ Nov\ 1995}}
+\DoxyCodeLine{00250\ \ \ \ \ \textcolor{comment}{//\ Author\ \ \ \ \ \ \ \ :\ Todd\ Knarr}}
+\DoxyCodeLine{00251\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00252\ \ \ \ \ \textcolor{comment}{//\ Creation\ date\ :\ 29\ Nov\ 1995}}
+\DoxyCodeLine{00253\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00254\ \ \ \ \ \textcolor{comment}{//\ Parameters\ \ \ \ :\ none}}
+\DoxyCodeLine{00255\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00256\ \ \ \ \ \textcolor{comment}{//\ Return\ values\ :\ int\ or\ none}}
+\DoxyCodeLine{00257\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00258\ \ \ \ \ \textcolor{comment}{//\ Description\ \ \ :}}
+\DoxyCodeLine{00259\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00260\ \ \ \ \ \textcolor{comment}{//\ Functions\ to\ return\ various\ parts\ of\ the\ date.\ The\ Year(),}}
+\DoxyCodeLine{00261\ \ \ \ \ \textcolor{comment}{//\ Month()\ and\ Day()\ functions\ return\ the\ corresponding\ parts}}
+\DoxyCodeLine{00262\ \ \ \ \ \textcolor{comment}{//\ of\ the\ date.\ The\ DayOfYear()\ returns\ the\ day\ of\ the\ year,}}
+\DoxyCodeLine{00263\ \ \ \ \ \textcolor{comment}{//\ with\ 1\ Jan\ being\ day\ 1.\ The\ DayOfWeek()\ and\ DayOfWorkWeek()}}
+\DoxyCodeLine{00264\ \ \ \ \ \textcolor{comment}{//\ functions\ return\ the\ day\ of\ the\ week,\ from\ 0\ through\ 6,\ with}}
+\DoxyCodeLine{00265\ \ \ \ \ \textcolor{comment}{//\ the\ DayOfWeek()\ matching\ localtime()'s\ convention\ (\ 0\ =\ Sunday,}}
+\DoxyCodeLine{00266\ \ \ \ \ \textcolor{comment}{//\ 6\ =\ Saturday\ )\ and\ DayOfWorkWeek()\ starting\ the\ week\ on}}
+\DoxyCodeLine{00267\ \ \ \ \ \textcolor{comment}{//\ Monday\ (\ 0\ =\ Monday,\ 6\ =\ Sunday\ ).\ IsLeapYear()\ returns\ 1\ if}}
+\DoxyCodeLine{00268\ \ \ \ \ \textcolor{comment}{//\ the\ date\ is\ in\ a\ leap\ year,\ 0\ otherwise.\ YMD()\ puts\ the}}
+\DoxyCodeLine{00269\ \ \ \ \ \textcolor{comment}{//\ year,\ month\ and\ day\ values\ directly\ into\ three\ integer\ variables,}}
+\DoxyCodeLine{00270\ \ \ \ \ \textcolor{comment}{//\ for\ times\ when\ you\ need\ all\ three\ at\ the\ same\ time.}}
+\DoxyCodeLine{00271\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00272\ \ \ \ \ \textcolor{keywordtype}{int}\ Year(\ \textcolor{keywordtype}{void}\ )\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00273\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ y,\ m,\ d;}
+\DoxyCodeLine{00275\ }
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ JdToYmd(\ lJulianDay,\ \&y,\ \&m,\ \&d\ );}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ y;}
+\DoxyCodeLine{00278\ \ \ \ \ \}}
+\DoxyCodeLine{00279\ \ \ \ \ \textcolor{keywordtype}{int}\ Month(\ \textcolor{keywordtype}{void}\ )\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00280\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ y,\ m,\ d;}
+\DoxyCodeLine{00282\ }
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ JdToYmd(\ lJulianDay,\ \&y,\ \&m,\ \&d\ );}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m;}
+\DoxyCodeLine{00285\ \ \ \ \ \}}
+\DoxyCodeLine{00286\ \ \ \ \ \textcolor{keywordtype}{int}\ Day(\ \textcolor{keywordtype}{void}\ )\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00287\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ y,\ m,\ d;}
+\DoxyCodeLine{00289\ }
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ JdToYmd(\ lJulianDay,\ \&y,\ \&m,\ \&d\ );}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ d;}
+\DoxyCodeLine{00292\ \ \ \ \ \}}
+\DoxyCodeLine{00293\ \ \ \ \ \textcolor{keywordtype}{int}\ DayOfYear(\ \textcolor{keywordtype}{void}\ )\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00294\ \ \ \ \ \textcolor{keywordtype}{int}\ DayOfWeek(\ \textcolor{keywordtype}{void}\ )\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00295\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\ (\ (\ (\textcolor{keywordtype}{int})\ (\ lJulianDay\ \%\ 7L\ )\ )\ +\ 1\ )\ \%\ 7\ );}
+\DoxyCodeLine{00297\ \ \ \ \ \}}
+\DoxyCodeLine{00298\ \ \ \ \ \textcolor{keywordtype}{int}\ DayOfWorkWeek(\ \textcolor{keywordtype}{void}\ )\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00299\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\ (\textcolor{keywordtype}{int})\ (\ lJulianDay\ \%\ 7L\ )\ );}
+\DoxyCodeLine{00301\ \ \ \ \ \}}
+\DoxyCodeLine{00302\ \ \ \ \ \textcolor{keywordtype}{int}\ IsLeapYear(\ \textcolor{keywordtype}{void}\ )\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00303\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ y,\ m,\ d;}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ JdToYmd(\ lJulianDay,\ \&y,\ \&m,\ \&d\ );}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ IsLeapYear(\ y\ );}
+\DoxyCodeLine{00307\ \ \ \ \ \}}
+\DoxyCodeLine{00308\ \ \ \ \ \textcolor{keywordtype}{void}\ YMD(\ \textcolor{keywordtype}{int}\ *pY,\ \textcolor{keywordtype}{int}\ *pM,\ \textcolor{keywordtype}{int}\ *pD\ )}
+\DoxyCodeLine{00309\ \ \ \ \ \{}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ JdToYmd(\ lJulianDay,\ pY,\ pM,\ pD\ );}
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00312\ \ \ \ \ \}}
+\DoxyCodeLine{00313\ }
+\DoxyCodeLine{00314\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00315\ \ \ \ \ \textcolor{comment}{//\ Function\ \ \ \ \ \ :\ Additive\ operators}}
+\DoxyCodeLine{00316\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00317\ \ \ \ \ \textcolor{comment}{//\ Author\ \ \ \ \ \ \ \ :\ Todd\ Knarr}}
+\DoxyCodeLine{00318\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00319\ \ \ \ \ \textcolor{comment}{//\ Creation\ date\ :\ 30\ Nov\ 1995}}
+\DoxyCodeLine{00320\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00321\ \ \ \ \ \textcolor{comment}{//\ Parameters\ \ \ \ :\ Date\ value\ and\ integer,\ or}}
+\DoxyCodeLine{00322\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Two\ date\ values}}
 \DoxyCodeLine{00323\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00324\ \ \ \ \ \textcolor{comment}{//\ Parameters\ \ \ \ :\ Date\ value\ and\ integer,\ or}}
-\DoxyCodeLine{00325\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Two\ date\ values}}
-\DoxyCodeLine{00326\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00327\ \ \ \ \ \textcolor{comment}{//\ Return\ values\ :\ New\ Date,\ or\ difference\ between\ two\ Dates}}
-\DoxyCodeLine{00328\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00329\ \ \ \ \ \textcolor{comment}{//\ Description\ \ \ :}}
-\DoxyCodeLine{00330\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00331\ \ \ \ \ \textcolor{comment}{//\ Adding\ an\ integral\ type\ to\ a\ Date\ adds\ the\ number\ of}}
-\DoxyCodeLine{00332\ \ \ \ \ \textcolor{comment}{//\ days\ in\ the\ integral\ type\ to\ the\ Date.\ Adding\ two\ Dates}}
-\DoxyCodeLine{00333\ \ \ \ \ \textcolor{comment}{//\ is\ not\ defined.\ Subtracting\ two\ dates\ yields\ the\ difference}}
-\DoxyCodeLine{00334\ \ \ \ \ \textcolor{comment}{//\ between\ them\ in\ days.}}
-\DoxyCodeLine{00335\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00336\ \ \ \ \ \textcolor{keyword}{friend}\ \mbox{\hyperlink{class_date}{Date}}\ operator+(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_date}{Date}}\&\ Left,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{long}\ Right\ )}
-\DoxyCodeLine{00337\ \ \ \ \ \{}
-\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_date}{Date}}\ Temp\ =\ Left;}
-\DoxyCodeLine{00339\ \ \ \ \ \ \ \ \ Temp.lJulianDay\ +=\ Right;}
-\DoxyCodeLine{00340\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Temp;}
-\DoxyCodeLine{00341\ \ \ \ \ \}}
-\DoxyCodeLine{00342\ \ \ \ \ \textcolor{keyword}{friend}\ \mbox{\hyperlink{class_date}{Date}}\ operator+(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{long}\ Left,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_date}{Date}}\&\ Right\ )}
-\DoxyCodeLine{00343\ \ \ \ \ \{}
-\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_date}{Date}}\ Temp\ =\ Right;}
-\DoxyCodeLine{00345\ \ \ \ \ \ \ \ \ Temp.lJulianDay\ +=\ Left;}
-\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Temp;}
-\DoxyCodeLine{00347\ \ \ \ \ \}}
-\DoxyCodeLine{00348\ \ \ \ \ \mbox{\hyperlink{class_date}{Date}}\&\ operator+=(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{long}\ Right\ )}
-\DoxyCodeLine{00349\ \ \ \ \ \{}
-\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ lJulianDay\ +=\ Right;}
-\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{00352\ \ \ \ \ \}}
-\DoxyCodeLine{00353\ \ \ \ \ \textcolor{keyword}{friend}\ \mbox{\hyperlink{class_date}{Date}}\ operator-\/(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_date}{Date}}\&\ Left,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{long}\ Right\ )}
-\DoxyCodeLine{00354\ \ \ \ \ \{}
-\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_date}{Date}}\ Temp\ =\ Left;}
-\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ Temp.lJulianDay\ -\/=\ Right;}
-\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Temp;}
-\DoxyCodeLine{00358\ \ \ \ \ \}}
-\DoxyCodeLine{00359\ \ \ \ \ \textcolor{keyword}{friend}\ \mbox{\hyperlink{class_date}{Date}}\ operator-\/(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{long}\ Left,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_date}{Date}}\&\ Right\ )}
-\DoxyCodeLine{00360\ \ \ \ \ \{}
-\DoxyCodeLine{00361\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_date}{Date}}\ Temp\ =\ Right;}
-\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ Temp.lJulianDay\ -\/=\ Left;}
-\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Temp;}
-\DoxyCodeLine{00364\ \ \ \ \ \}}
-\DoxyCodeLine{00365\ \ \ \ \ \mbox{\hyperlink{class_date}{Date}}\&\ operator-\/=(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{long}\ Right\ )}
-\DoxyCodeLine{00366\ \ \ \ \ \{}
-\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ lJulianDay\ -\/=\ Right;}
-\DoxyCodeLine{00368\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{00369\ \ \ \ \ \}}
-\DoxyCodeLine{00370\ \ \ \ \ \textcolor{keywordtype}{long}\ operator-\/(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_date}{Date}}\&\ Right\ )}
-\DoxyCodeLine{00371\ \ \ \ \ \{}
-\DoxyCodeLine{00372\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ lJulianDay\ -\/\ Right.lJulianDay;}
-\DoxyCodeLine{00373\ \ \ \ \ \}}
-\DoxyCodeLine{00374\ }
-\DoxyCodeLine{00375\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00376\ \ \ \ \ \textcolor{comment}{//\ Function\ \ \ \ \ \ :\ ++\ and\ -\/-\/\ operators,\ prefix\ and\ postfix\ forms}}
-\DoxyCodeLine{00377\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00378\ \ \ \ \ \textcolor{comment}{//\ Author\ \ \ \ \ \ \ \ :\ Todd\ Knarr}}
-\DoxyCodeLine{00379\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00380\ \ \ \ \ \textcolor{comment}{//\ Creation\ date\ :\ 1\ Dec\ 1995}}
-\DoxyCodeLine{00381\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00382\ \ \ \ \ \textcolor{comment}{//\ Parameters\ \ \ \ :\ none}}
-\DoxyCodeLine{00383\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00384\ \ \ \ \ \textcolor{comment}{//\ Return\ values\ :\ New\ Date}}
-\DoxyCodeLine{00385\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00386\ \ \ \ \ \mbox{\hyperlink{class_date}{Date}}\&\ operator++()}
-\DoxyCodeLine{00387\ \ \ \ \ \{}
-\DoxyCodeLine{00388\ \ \ \ \ \ \ \ \ lJulianDay++;}
-\DoxyCodeLine{00389\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{00390\ \ \ \ \ \}}
-\DoxyCodeLine{00391\ \ \ \ \ \mbox{\hyperlink{class_date}{Date}}\ operator++(\ \textcolor{keywordtype}{int}\ )}
-\DoxyCodeLine{00392\ \ \ \ \ \{}
-\DoxyCodeLine{00393\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_date}{Date}}\ Temp\ =\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{00394\ \ \ \ \ \ \ \ \ lJulianDay++;}
-\DoxyCodeLine{00395\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Temp;}
-\DoxyCodeLine{00396\ \ \ \ \ \}}
-\DoxyCodeLine{00397\ \ \ \ \ \mbox{\hyperlink{class_date}{Date}}\&\ operator-\/-\/()}
-\DoxyCodeLine{00398\ \ \ \ \ \{}
-\DoxyCodeLine{00399\ \ \ \ \ \ \ \ \ lJulianDay-\/-\/;}
-\DoxyCodeLine{00400\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{00401\ \ \ \ \ \}}
-\DoxyCodeLine{00402\ \ \ \ \ \mbox{\hyperlink{class_date}{Date}}\ operator-\/-\/(\ \textcolor{keywordtype}{int}\ )}
-\DoxyCodeLine{00403\ \ \ \ \ \{}
-\DoxyCodeLine{00404\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_date}{Date}}\ Temp\ =\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{00405\ \ \ \ \ \ \ \ \ lJulianDay-\/-\/;}
-\DoxyCodeLine{00406\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Temp;}
-\DoxyCodeLine{00407\ \ \ \ \ \}}
-\DoxyCodeLine{00408\ }
-\DoxyCodeLine{00409\ \ \ \ \ \textcolor{comment}{//\ Function\ \ \ \ \ \ :\ to\_string}}
-\DoxyCodeLine{00410\ \ \ \ \ \textcolor{comment}{//\ Author\ \ \ \ \ \ \ \ :\ Paul\ Wolfgang}}
-\DoxyCodeLine{00411\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00412\ \ \ \ \ \textcolor{comment}{//\ Creation\ date\ :\ 17\ Feb\ 2006}}
-\DoxyCodeLine{00413\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00414\ \ \ \ \ \textcolor{comment}{//\ Parameters\ \ \ \ :\ none}}
-\DoxyCodeLine{00415\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00416\ \ \ \ \ \textcolor{comment}{//\ Return\ value\ \ :\ std::string}}
+\DoxyCodeLine{00324\ \ \ \ \ \textcolor{comment}{//\ Return\ values\ :\ New\ Date,\ or\ difference\ between\ two\ Dates}}
+\DoxyCodeLine{00325\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00326\ \ \ \ \ \textcolor{comment}{//\ Description\ \ \ :}}
+\DoxyCodeLine{00327\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00328\ \ \ \ \ \textcolor{comment}{//\ Adding\ an\ integral\ type\ to\ a\ Date\ adds\ the\ number\ of}}
+\DoxyCodeLine{00329\ \ \ \ \ \textcolor{comment}{//\ days\ in\ the\ integral\ type\ to\ the\ Date.\ Adding\ two\ Dates}}
+\DoxyCodeLine{00330\ \ \ \ \ \textcolor{comment}{//\ is\ not\ defined.\ Subtracting\ two\ dates\ yields\ the\ difference}}
+\DoxyCodeLine{00331\ \ \ \ \ \textcolor{comment}{//\ between\ them\ in\ days.}}
+\DoxyCodeLine{00332\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00333\ \ \ \ \ \textcolor{keyword}{friend}\ \mbox{\hyperlink{class_date}{Date}}\ operator+(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_date}{Date}}\&\ Left,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{long}\ Right\ )}
+\DoxyCodeLine{00334\ \ \ \ \ \{}
+\DoxyCodeLine{00335\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_date}{Date}}\ Temp\ =\ Left;}
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ Temp.lJulianDay\ +=\ Right;}
+\DoxyCodeLine{00337\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Temp;}
+\DoxyCodeLine{00338\ \ \ \ \ \}}
+\DoxyCodeLine{00339\ \ \ \ \ \textcolor{keyword}{friend}\ \mbox{\hyperlink{class_date}{Date}}\ operator+(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{long}\ Left,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_date}{Date}}\&\ Right\ )}
+\DoxyCodeLine{00340\ \ \ \ \ \{}
+\DoxyCodeLine{00341\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_date}{Date}}\ Temp\ =\ Right;}
+\DoxyCodeLine{00342\ \ \ \ \ \ \ \ \ Temp.lJulianDay\ +=\ Left;}
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Temp;}
+\DoxyCodeLine{00344\ \ \ \ \ \}}
+\DoxyCodeLine{00345\ \ \ \ \ \mbox{\hyperlink{class_date}{Date}}\&\ operator+=(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{long}\ Right\ )}
+\DoxyCodeLine{00346\ \ \ \ \ \{}
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ lJulianDay\ +=\ Right;}
+\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00349\ \ \ \ \ \}}
+\DoxyCodeLine{00350\ \ \ \ \ \textcolor{keyword}{friend}\ \mbox{\hyperlink{class_date}{Date}}\ operator-\/(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_date}{Date}}\&\ Left,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{long}\ Right\ )}
+\DoxyCodeLine{00351\ \ \ \ \ \{}
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_date}{Date}}\ Temp\ =\ Left;}
+\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ Temp.lJulianDay\ -\/=\ Right;}
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Temp;}
+\DoxyCodeLine{00355\ \ \ \ \ \}}
+\DoxyCodeLine{00356\ \ \ \ \ \textcolor{keyword}{friend}\ \mbox{\hyperlink{class_date}{Date}}\ operator-\/(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{long}\ Left,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_date}{Date}}\&\ Right\ )}
+\DoxyCodeLine{00357\ \ \ \ \ \{}
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_date}{Date}}\ Temp\ =\ Right;}
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ Temp.lJulianDay\ -\/=\ Left;}
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Temp;}
+\DoxyCodeLine{00361\ \ \ \ \ \}}
+\DoxyCodeLine{00362\ \ \ \ \ \mbox{\hyperlink{class_date}{Date}}\&\ operator-\/=(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{long}\ Right\ )}
+\DoxyCodeLine{00363\ \ \ \ \ \{}
+\DoxyCodeLine{00364\ \ \ \ \ \ \ \ \ lJulianDay\ -\/=\ Right;}
+\DoxyCodeLine{00365\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00366\ \ \ \ \ \}}
+\DoxyCodeLine{00367\ \ \ \ \ \textcolor{keywordtype}{long}\ operator-\/(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_date}{Date}}\&\ Right\ )}
+\DoxyCodeLine{00368\ \ \ \ \ \{}
+\DoxyCodeLine{00369\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ lJulianDay\ -\/\ Right.lJulianDay;}
+\DoxyCodeLine{00370\ \ \ \ \ \}}
+\DoxyCodeLine{00371\ }
+\DoxyCodeLine{00372\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00373\ \ \ \ \ \textcolor{comment}{//\ Function\ \ \ \ \ \ :\ ++\ and\ -\/-\/\ operators,\ prefix\ and\ postfix\ forms}}
+\DoxyCodeLine{00374\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00375\ \ \ \ \ \textcolor{comment}{//\ Author\ \ \ \ \ \ \ \ :\ Todd\ Knarr}}
+\DoxyCodeLine{00376\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00377\ \ \ \ \ \textcolor{comment}{//\ Creation\ date\ :\ 1\ Dec\ 1995}}
+\DoxyCodeLine{00378\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00379\ \ \ \ \ \textcolor{comment}{//\ Parameters\ \ \ \ :\ none}}
+\DoxyCodeLine{00380\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00381\ \ \ \ \ \textcolor{comment}{//\ Return\ values\ :\ New\ Date}}
+\DoxyCodeLine{00382\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00383\ \ \ \ \ \mbox{\hyperlink{class_date}{Date}}\&\ operator++()}
+\DoxyCodeLine{00384\ \ \ \ \ \{}
+\DoxyCodeLine{00385\ \ \ \ \ \ \ \ \ lJulianDay++;}
+\DoxyCodeLine{00386\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00387\ \ \ \ \ \}}
+\DoxyCodeLine{00388\ \ \ \ \ \mbox{\hyperlink{class_date}{Date}}\ operator++(\ \textcolor{keywordtype}{int}\ )}
+\DoxyCodeLine{00389\ \ \ \ \ \{}
+\DoxyCodeLine{00390\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_date}{Date}}\ Temp\ =\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00391\ \ \ \ \ \ \ \ \ lJulianDay++;}
+\DoxyCodeLine{00392\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Temp;}
+\DoxyCodeLine{00393\ \ \ \ \ \}}
+\DoxyCodeLine{00394\ \ \ \ \ \mbox{\hyperlink{class_date}{Date}}\&\ operator-\/-\/()}
+\DoxyCodeLine{00395\ \ \ \ \ \{}
+\DoxyCodeLine{00396\ \ \ \ \ \ \ \ \ lJulianDay-\/-\/;}
+\DoxyCodeLine{00397\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00398\ \ \ \ \ \}}
+\DoxyCodeLine{00399\ \ \ \ \ \mbox{\hyperlink{class_date}{Date}}\ operator-\/-\/(\ \textcolor{keywordtype}{int}\ )}
+\DoxyCodeLine{00400\ \ \ \ \ \{}
+\DoxyCodeLine{00401\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_date}{Date}}\ Temp\ =\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00402\ \ \ \ \ \ \ \ \ lJulianDay-\/-\/;}
+\DoxyCodeLine{00403\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Temp;}
+\DoxyCodeLine{00404\ \ \ \ \ \}}
+\DoxyCodeLine{00405\ }
+\DoxyCodeLine{00406\ \ \ \ \ \textcolor{comment}{//\ Function\ \ \ \ \ \ :\ to\_string}}
+\DoxyCodeLine{00407\ \ \ \ \ \textcolor{comment}{//\ Author\ \ \ \ \ \ \ \ :\ Paul\ Wolfgang}}
+\DoxyCodeLine{00408\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00409\ \ \ \ \ \textcolor{comment}{//\ Creation\ date\ :\ 17\ Feb\ 2006}}
+\DoxyCodeLine{00410\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00411\ \ \ \ \ \textcolor{comment}{//\ Parameters\ \ \ \ :\ none}}
+\DoxyCodeLine{00412\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00413\ \ \ \ \ \textcolor{comment}{//\ Return\ value\ \ :\ std::string}}
+\DoxyCodeLine{00414\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00415\ \ \ \ \ \textcolor{comment}{//\ Formats\ the\ Date\ into\ an\ ASCII\ representation.}}
+\DoxyCodeLine{00416\ \ \ \ \ \textcolor{comment}{//\ This\ is\ in\ the\ form\ yyyy-\/mm-\/dd}}
 \DoxyCodeLine{00417\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00418\ \ \ \ \ \textcolor{comment}{//\ Formats\ the\ Date\ into\ an\ ASCII\ representation.}}
-\DoxyCodeLine{00419\ \ \ \ \ \textcolor{comment}{//\ This\ is\ in\ the\ form\ yyyy-\/mm-\/dd}}
-\DoxyCodeLine{00420\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00421\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00422\ \ \ \ \ std::string\ to\_string()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00423\ }
-\DoxyCodeLine{00424\ \ \ \ \ \textcolor{comment}{//\ Function\ \ \ \ \ \ :\ comparison\ operators}}
-\DoxyCodeLine{00425\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00426\ \ \ \ \ \textcolor{comment}{//\ Author\ \ \ \ \ \ \ \ :\ Todd\ Knarr}}
-\DoxyCodeLine{00427\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00428\ \ \ \ \ \textcolor{comment}{//\ Creation\ date\ :\ 1\ Dec\ 1995}}
-\DoxyCodeLine{00429\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00430\ \ \ \ \ \textcolor{comment}{//\ Parameters\ \ \ \ :}}
+\DoxyCodeLine{00418\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00419\ \ \ \ \ std::string\ to\_string()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00420\ }
+\DoxyCodeLine{00421\ \ \ \ \ \textcolor{comment}{//\ Function\ \ \ \ \ \ :\ comparison\ operators}}
+\DoxyCodeLine{00422\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00423\ \ \ \ \ \textcolor{comment}{//\ Author\ \ \ \ \ \ \ \ :\ Todd\ Knarr}}
+\DoxyCodeLine{00424\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00425\ \ \ \ \ \textcolor{comment}{//\ Creation\ date\ :\ 1\ Dec\ 1995}}
+\DoxyCodeLine{00426\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00427\ \ \ \ \ \textcolor{comment}{//\ Parameters\ \ \ \ :}}
+\DoxyCodeLine{00428\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00429\ \ \ \ \ \textcolor{comment}{//\ Return\ values\ :\ non-\/zero\ if\ the\ comparison\ succeeds}}
+\DoxyCodeLine{00430\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0\ if\ it\ fails}}
 \DoxyCodeLine{00431\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00432\ \ \ \ \ \textcolor{comment}{//\ Return\ values\ :\ non-\/zero\ if\ the\ comparison\ succeeds}}
-\DoxyCodeLine{00433\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0\ if\ it\ fails}}
-\DoxyCodeLine{00434\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00435\ \ \ \ \ \textcolor{keywordtype}{int}\ operator==(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_date}{Date}}\&\ Right\ )\textcolor{keyword}{\ const}}
-\DoxyCodeLine{00436\ \textcolor{keyword}{\ \ \ \ }\{}
-\DoxyCodeLine{00437\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ lJulianDay\ ==\ Right.lJulianDay;}
-\DoxyCodeLine{00438\ \ \ \ \ \}}
-\DoxyCodeLine{00439\ \ \ \ \ \textcolor{keywordtype}{int}\ operator!=(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_date}{Date}}\&\ Right\ )\textcolor{keyword}{\ const}}
-\DoxyCodeLine{00440\ \textcolor{keyword}{\ \ \ \ }\{}
-\DoxyCodeLine{00441\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ lJulianDay\ !=\ Right.lJulianDay;}
-\DoxyCodeLine{00442\ \ \ \ \ \}}
-\DoxyCodeLine{00443\ \ \ \ \ \textcolor{keywordtype}{int}\ operator<(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_date}{Date}}\&\ Right\ )\textcolor{keyword}{\ const}}
-\DoxyCodeLine{00444\ \textcolor{keyword}{\ \ \ \ }\{}
-\DoxyCodeLine{00445\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ lJulianDay\ <\ Right.lJulianDay;}
-\DoxyCodeLine{00446\ \ \ \ \ \}}
-\DoxyCodeLine{00447\ \ \ \ \ \textcolor{keywordtype}{int}\ operator<=(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_date}{Date}}\&\ Right\ )\textcolor{keyword}{\ const}}
-\DoxyCodeLine{00448\ \textcolor{keyword}{\ \ \ \ }\{}
-\DoxyCodeLine{00449\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ lJulianDay\ <=\ Right.lJulianDay;}
-\DoxyCodeLine{00450\ \ \ \ \ \}}
-\DoxyCodeLine{00451\ \ \ \ \ \textcolor{keywordtype}{int}\ operator>(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_date}{Date}}\&\ Right\ )\textcolor{keyword}{\ const}}
-\DoxyCodeLine{00452\ \textcolor{keyword}{\ \ \ \ }\{}
-\DoxyCodeLine{00453\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ lJulianDay\ >\ Right.lJulianDay;}
-\DoxyCodeLine{00454\ \ \ \ \ \}}
-\DoxyCodeLine{00455\ \ \ \ \ \textcolor{keywordtype}{int}\ operator>=(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_date}{Date}}\&\ Right\ )\textcolor{keyword}{\ const}}
-\DoxyCodeLine{00456\ \textcolor{keyword}{\ \ \ \ }\{}
-\DoxyCodeLine{00457\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ lJulianDay\ >=\ Right.lJulianDay;}
-\DoxyCodeLine{00458\ \ \ \ \ \}}
-\DoxyCodeLine{00459\ }
-\DoxyCodeLine{00460\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00461\ \ \ \ \ \textcolor{comment}{//\ Function\ \ \ \ \ \ :\ ToSysTime}}
-\DoxyCodeLine{00462\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00463\ \ \ \ \ \textcolor{comment}{//\ Author\ \ \ \ \ \ \ \ :\ Todd\ Knarr}}
-\DoxyCodeLine{00464\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00465\ \ \ \ \ \textcolor{comment}{//\ Creation\ date\ :\ 29\ Nov\ 1995}}
-\DoxyCodeLine{00466\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00467\ \ \ \ \ \textcolor{comment}{//\ Parameters\ \ \ \ :\ none}}
-\DoxyCodeLine{00468\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00469\ \ \ \ \ \textcolor{comment}{//\ Return\ values\ :\ converted\ result}}
-\DoxyCodeLine{00470\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00471\ \ \ \ \ \textcolor{comment}{//\ Description\ \ \ :}}
+\DoxyCodeLine{00432\ \ \ \ \ \textcolor{keywordtype}{int}\ operator==(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_date}{Date}}\&\ Right\ )\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00433\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00434\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ lJulianDay\ ==\ Right.lJulianDay;}
+\DoxyCodeLine{00435\ \ \ \ \ \}}
+\DoxyCodeLine{00436\ \ \ \ \ \textcolor{keywordtype}{int}\ operator!=(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_date}{Date}}\&\ Right\ )\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00437\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00438\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ lJulianDay\ !=\ Right.lJulianDay;}
+\DoxyCodeLine{00439\ \ \ \ \ \}}
+\DoxyCodeLine{00440\ \ \ \ \ \textcolor{keywordtype}{int}\ operator<(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_date}{Date}}\&\ Right\ )\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00441\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00442\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ lJulianDay\ <\ Right.lJulianDay;}
+\DoxyCodeLine{00443\ \ \ \ \ \}}
+\DoxyCodeLine{00444\ \ \ \ \ \textcolor{keywordtype}{int}\ operator<=(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_date}{Date}}\&\ Right\ )\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00445\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00446\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ lJulianDay\ <=\ Right.lJulianDay;}
+\DoxyCodeLine{00447\ \ \ \ \ \}}
+\DoxyCodeLine{00448\ \ \ \ \ \textcolor{keywordtype}{int}\ operator>(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_date}{Date}}\&\ Right\ )\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00449\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00450\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ lJulianDay\ >\ Right.lJulianDay;}
+\DoxyCodeLine{00451\ \ \ \ \ \}}
+\DoxyCodeLine{00452\ \ \ \ \ \textcolor{keywordtype}{int}\ operator>=(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_date}{Date}}\&\ Right\ )\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00453\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00454\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ lJulianDay\ >=\ Right.lJulianDay;}
+\DoxyCodeLine{00455\ \ \ \ \ \}}
+\DoxyCodeLine{00456\ }
+\DoxyCodeLine{00457\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00458\ \ \ \ \ \textcolor{comment}{//\ Function\ \ \ \ \ \ :\ ToSysTime}}
+\DoxyCodeLine{00459\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00460\ \ \ \ \ \textcolor{comment}{//\ Author\ \ \ \ \ \ \ \ :\ Todd\ Knarr}}
+\DoxyCodeLine{00461\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00462\ \ \ \ \ \textcolor{comment}{//\ Creation\ date\ :\ 29\ Nov\ 1995}}
+\DoxyCodeLine{00463\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00464\ \ \ \ \ \textcolor{comment}{//\ Parameters\ \ \ \ :\ none}}
+\DoxyCodeLine{00465\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00466\ \ \ \ \ \textcolor{comment}{//\ Return\ values\ :\ converted\ result}}
+\DoxyCodeLine{00467\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00468\ \ \ \ \ \textcolor{comment}{//\ Description\ \ \ :}}
+\DoxyCodeLine{00469\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00470\ \ \ \ \ \textcolor{comment}{//\ Converts\ the\ date\ to\ a\ time\_t\ value}}
+\DoxyCodeLine{00471\ \ \ \ \ \textcolor{comment}{//\ representing\ midnight\ of\ that\ date.}}
 \DoxyCodeLine{00472\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00473\ \ \ \ \ \textcolor{comment}{//\ Converts\ the\ date\ to\ a\ time\_t\ value}}
-\DoxyCodeLine{00474\ \ \ \ \ \textcolor{comment}{//\ representing\ midnight\ of\ that\ date.}}
-\DoxyCodeLine{00475\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00476\ \ \ \ \ time\_t\ ToSysTime(\ \textcolor{keywordtype}{void}\ )\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00477\ }
-\DoxyCodeLine{00478\ \ \ \ \ \textcolor{keyword}{friend}\ std::ostream\&\ operator<<(std::ostream\&,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_date}{Date}}\&);}
-\DoxyCodeLine{00479\ \ \ \ \ \textcolor{keyword}{friend}\ std::istream\&\ operator>>(std::istream\&,\ \mbox{\hyperlink{class_date}{Date}}\&);}
-\DoxyCodeLine{00480\ \};}
-\DoxyCodeLine{00481\ }
-\DoxyCodeLine{00482\ }
-\DoxyCodeLine{00483\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//ASSIGNMENT\_DATE\_H}}
+\DoxyCodeLine{00473\ \ \ \ \ time\_t\ ToSysTime(\ \textcolor{keywordtype}{void}\ )\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00474\ }
+\DoxyCodeLine{00475\ \ \ \ \ \textcolor{keyword}{friend}\ std::ostream\&\ operator<<(std::ostream\&,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_date}{Date}}\&);}
+\DoxyCodeLine{00476\ \ \ \ \ \textcolor{keyword}{friend}\ std::istream\&\ operator>>(std::istream\&,\ \mbox{\hyperlink{class_date}{Date}}\&);}
+\DoxyCodeLine{00477\ \};}
+\DoxyCodeLine{00478\ }
+\DoxyCodeLine{00479\ }
+\DoxyCodeLine{00480\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//ASSIGNMENT\_DATE\_H}}
 
 \end{DoxyCode}

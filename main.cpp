@@ -165,8 +165,9 @@ int main()
                 break;
             }
 
-                // case 3:
-                // {
+            case 3:
+                 {
+
                 //     Account a;
                 //     Customer c;
                 //     long account_number;
@@ -187,8 +188,9 @@ int main()
                 //     cout << "Balance: ";
                 //     cout << a.get_balance() << endl;
 
-                //     break;
-                // }
+                break;
+             }
+
 
             default:
                 exit(0);

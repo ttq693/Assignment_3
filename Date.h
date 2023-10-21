@@ -1,6 +1,3 @@
-//
-// Created by tazin on 2023-10-19.
-//
 
 #ifndef ASSIGNMENT_DATE_H
 #define ASSIGNMENT_DATE_H

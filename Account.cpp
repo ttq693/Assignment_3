@@ -1,6 +1,4 @@
-//
-// Created by tazin on 2023-10-19.
-//
+
 #include "Account.h"
 
 #include <bits/stdc++.h>
@@ -224,7 +222,7 @@ void Bank::add_account()
     }
 }
 
-//get deposite related details
+//get deposit related details
 void Bank::make_deposit()
 {
     Account a;
@@ -252,7 +250,7 @@ void Bank::make_deposit()
     cout << "Deposit in " << a.get_acType() << " Account. Amount: $" << amount << " on " << date << " new balance: $" << a.get_balance() << endl;
 }
 
-//get the withdrawal detrails
+//get the withdrawal details
 void Bank::make_withdrawal()
 {
     Account a;
@@ -266,7 +264,7 @@ void Bank::make_withdrawal()
     cout << "Enter the date yyyy-mm-dd> ";
     cin >> date;
 
-    if (a.get_acType() == "Checking") //chech the whether account type is checking or not
+    if (a.get_acType() == "Checking") //check whether the account type is checking or not
     {
         Checking_Account ca;
         double remain_amt = ca.withdraw(amount); //get the remaining amount
@@ -280,10 +278,10 @@ void Bank::make_withdrawal()
             cout << "Insufficient Balance" << endl;
         }
     }
-    else if (a.get_acType() == "Savings")  //chech the account type is saving or not
+    else if (a.get_acType() == "Savings")  //check the account type is saving or not
     {
         Savings_Account sa;
-        double remain_amt = sa.withdraw(amount);  // will return finall amout  from account
+        double remain_amt = sa.withdraw(amount);  // will return final amount from the account
         if (remain_amt >= 0)
         {
             sa.set_balance(remain_amt); // set balance for account

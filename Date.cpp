@@ -1,6 +1,3 @@
-//
-// Created by tazin on 2023-10-19.
-//
 
 #include <sstream>
 #include <ostream>
